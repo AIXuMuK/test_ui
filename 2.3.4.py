@@ -4,18 +4,15 @@ from selenium import webdriver
 
 browser = webdriver.Chrome()
 
-link = "http://suninjuly.github.io/alert_accept.html"
+link = "http://suninjuly.github.io/redirect_accept.html"
 
 browser.get(link)
 
 btn = browser.find_element_by_tag_name("button")
-
 btn.click()
 
-confirm = browser.switch_to.alert
-time.sleep(1)
-confirm.accept()
-time.sleep(1)
+new_window = browser.window_handles[1]
+browser.switch_to.window(new_window)
 
 btn2 = browser.find_element_by_tag_name("button")
 input_answer = browser.find_element_by_id("answer")
